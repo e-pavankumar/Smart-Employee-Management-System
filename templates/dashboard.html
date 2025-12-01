@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Dashboard</h3>
+
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="card p-3 bg-primary text-white">
+            <h4>Total Employees</h4>
+            <h2>{{ total_employees }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 bg-success text-white">
+            <h4>Total Tasks</h4>
+            <h2>{{ total_tasks }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 bg-warning text-white">
+            <h4>Completed Tasks</h4>
+            <h2>{{ completed_tasks }}</h2>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

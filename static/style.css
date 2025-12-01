@@ -1,0 +1,17 @@
+.login-box {
+    max-width: 380px;
+    margin: 60px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.stat-card {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.card {
+    border-radius: 10px;
+}

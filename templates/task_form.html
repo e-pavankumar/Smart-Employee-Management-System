@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>{{ 'Edit' if task else 'Add' }} Task</h3>
+
+<form method="post">
+
+    <label>Title</label>
+    <input class="form-control mb-2" name="title" value="{{ task.title if task }}">
+
+    <label>Description</label>
+    <textarea class="form-control mb-2" name="description">{{ task.description if task }}</textarea>
+
+    <label>Status</label>
+    <select class="form-select mb-2" name="status">
+        {% set s = task.status if task else 'Pending' %}
+        <option value="Pending" {% if s=='Pending' %}selected{% endif %}>Pending</option>
+        <option value="In Progress" {% if s=='In Progress' %}selected{% endif %}>In Progress</option>
+        <option value="Completed" {% if s=='Completed' %}selected{% endif %}>Completed</option>
+    </select>
+
+    <label>Due Date</label>
+    <input class="form-control mb-2" type="date" name="due_date"
+           value="{{ task.due_date.strftime('%Y-%m-%d') if task and task.due_date }}">
+
+    <label>Assign Employee</label>
+    <select class="form-select mb-3" name="employee_id">
+        {% for e in employees %}
+        <option value="{{e.id}}" {% if task and task.employee_id==e.id %}selected{% endif %}>
+            {{ e.full_name }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <button class="btn btn-success">Save</button>
+
+</form>
+{% endblock %}

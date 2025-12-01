@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>{{ 'Edit' if employee else 'Add' }} Employee</h3>
+
+<form method="post">
+    <label>Name</label>
+    <input class="form-control mb-2" name="full_name" value="{{ employee.full_name if employee }}">
+
+    <label>Email</label>
+    <input class="form-control mb-2" name="email" value="{{ employee.email if employee }}">
+
+    <label>Department</label>
+    <input class="form-control mb-2" name="department" value="{{ employee.department if employee }}">
+
+    <label>Role</label>
+    <input class="form-control mb-2" name="role" value="{{ employee.role if employee }}">
+
+    <label>Location</label>
+    <input class="form-control mb-2" name="location" value="{{ employee.location if employee }}">
+
+    <label>Date Joined</label>
+    <input class="form-control mb-2" type="date" name="date_joined"
+           value="{{ employee.date_joined.strftime('%Y-%m-%d') if employee }}">
+
+    <button class="btn btn-success">Save</button>
+</form>
+
+{% endblock %}

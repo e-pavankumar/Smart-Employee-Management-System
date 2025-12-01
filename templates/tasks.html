@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h3>Tasks</h3>
+    <a class="btn btn-primary" href="/tasks/new">Add Task</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th><th>Status</th><th>Employee</th><th>Due</th><th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in tasks %}
+        <tr>
+            <td>{{ t.title }}</td>
+            <td>{{ t.status }}</td>
+            <td>{{ t.employee.full_name if t.employee }}</td>
+            <td>{{ t.due_date }}</td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="/tasks/{{t.id}}/edit">Edit</a>
+
+                <form method="post" action="/tasks/{{t.id}}/delete"
+                      style="display:inline-block">
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
